@@ -1,0 +1,20 @@
+#library {
+    background-image: url(../Assets/pexels-photo-12064.jpeg);
+    background-size: 100vw 100vh;
+    margin-left: -1vw;
+    height: 100vh;
+    padding: -1px;
+  }
+  #right-side {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10vh;
+  }
+  #right-inner-stack {
+    margin: auto;
+  }
+  .inr-stack-btn {
+      margin-bottom:30px;
+  }
+  
