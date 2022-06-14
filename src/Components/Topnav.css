@@ -1,0 +1,22 @@
+.topnav {
+  display: flex;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  overflow: hidden;
+  align-items: stretch;
+  justify-content: space evenly;
+}
+.topnav-items {
+  margin: auto;
+}
+#join-create {
+  background-color: #5364FF;
+  color: white;
+  border:none;
+  border-radius:5px;
+  margin-right: -4vw;
+  margin-left: 52vw;
+  font-size:14px;
+  height:2em;
+  width :10em;
+}
