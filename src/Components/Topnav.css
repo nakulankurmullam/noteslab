@@ -2,21 +2,23 @@
   display: flex;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
   overflow: hidden;
-  align-items: stretch;
-  justify-content: space evenly;
+  align-items: center;
+  justify-content: space-between;
+  row-gap:3vw;
 }
-.topnav-items {
+/* .topnav-items {
   margin: auto;
-}
+} */
+
 #join-create {
-  background-color: #5364FF;
+  background-color: #5364ff;
   color: white;
-  border:none;
-  border-radius:5px;
-  margin-right: -4vw;
-  margin-left: 52vw;
-  font-size:14px;
-  height:2em;
-  width :10em;
+  border: none;
+  border-radius: 5rem;
+  font-size: 14px;
+  height: 2em;
+  width: 10em;
 }

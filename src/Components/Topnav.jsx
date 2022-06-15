@@ -7,10 +7,10 @@ function Topnav() {
   return (
     <>
       <nav class="topnav">
-        <div class="topnav-items">
+        <div class="topnav-items" id="profile-info">
           <Profile />
         </div>
-        <div class="topnav-items">
+        <div class="topnav-items" id="search-btn">
           <Search />
         </div>
         <div class="topnav-items">
