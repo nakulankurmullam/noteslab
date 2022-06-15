@@ -1,0 +1,18 @@
+/* C97800 */
+#selections{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    align-items:center;
+    height: 84vh;
+}
+.selection-btns{
+    background-color: #c97800;
+    font-size:1.4rem;
+    color:white;
+    border:none;
+    border-radius:14px;
+    padding: 5px 10px 5px 10px;
+    height:11vh;
+    width:23vw;
+}

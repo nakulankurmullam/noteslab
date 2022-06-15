@@ -1,8 +1,13 @@
 import React from 'react'
+import './Selection.css'
 
 function Selections() {
   return (
-    <div>Selections</div>
+    <div id="selections">
+      <button className="selection-btns"> Calculate GPA</button>
+      <button className="selection-btns"> Calculate GPA</button>
+      <button className="selection-btns"> Calculate GPA</button>
+    </div>
   )
 }
 
