@@ -14,10 +14,12 @@ function Landing() {
           <div id="library"></div>
         </Col>
         <Col id="right-side">
-          <Stack id="right-inner-stack">
-            <Button className="inr-stack-btn" variant="secondary">Student Login</Button>
-            <Button className="inr-stack-btn" variant="secondary">Faculty Login</Button>
-          </Stack>
+          <div id="right-inner-stack">
+            <h1>Notes Lab</h1>
+            <button className="inr-stack-btn" variant="secondary">Student Login</button>
+            <button className="inr-stack-btn" variant="secondary">Faculty Login</button>
+            <span id="signup-link">Do not have an account? <a href="#">Sign Up</a> instead</span>
+          </div>
         </Col>
       </Row>
     </Container>
