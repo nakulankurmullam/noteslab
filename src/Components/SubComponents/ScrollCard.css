@@ -9,7 +9,9 @@
 }
 .sCard-left {
   background-color: #5f341c;
-  color: black;
+  /* background-color: white; */
+  /* color: rgb(54, 53, 53); */
+  color:rgb(229, 227, 227);
   font-size: 3rem;
   height: 5rem;
   width: 5rem;

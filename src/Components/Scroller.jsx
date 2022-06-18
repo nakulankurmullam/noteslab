@@ -19,6 +19,9 @@ function Scroller() {
         <ScrollCard />
         <ScrollCard />
         <ScrollCard />
+        <ScrollCard />
+        <ScrollCard />
+        <ScrollCard />
       </div>
     </div>
   );
