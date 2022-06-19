@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./Signup.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
-import { Button, InputGroup } from "react-bootstrap";
+import { Button} from "react-bootstrap";
+import {useUserAuth} from "../Context/userAuthContext"
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -11,18 +12,29 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [regNum, setRegNum] = useState("");
   const [dept, setDept] = useState("");
-  const [isStudent, setIsStudent] = useState("");
+  const [isStudent, setIsStudent] = useState(true);
   const [sem, setSem] = useState("");
   const navigate = useNavigate();
+  const {signUp} = useUserAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!sem || !dept || !userName || !regNum) {
-      alert("Make sure to fill the form");
-      return;
+    if (isStudent) {
+      if (!dept || !userName) {
+        if (!regNum || !sem) {
+          alert("Make sure to fill the form");
+          return;
+        }
+      }
+    } else {
+      if (!dept || !userName) {
+        alert("Make sure to fill the form");
+        return;
+      }
     }
     setError("");
     try {
+      await signUp(email, password)
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -68,7 +80,11 @@ const Signup = () => {
               name="reg-type"
               value="faculty"
               id="fcltyType"
-              onChange={(e) => setIsStudent(false)}
+              checked={!isStudent}
+              onChange={(e) => {
+                console.log("yeah ");
+                setIsStudent(!isStudent);
+              }}
             />
             <label htmlFor="fcltyType">Faculty</label>
             <input
@@ -76,8 +92,11 @@ const Signup = () => {
               name="reg-type"
               value="student"
               id="stdntType"
-              checked="true"
-              onChange={(e) => setIsStudent(true)}
+              checked={isStudent}
+              onChange={(e) => {
+                console.log("not yeah");
+                setIsStudent(!isStudent);
+              }}
             />
             <label htmlFor="stdntType">Student</label>
           </div>
@@ -132,28 +151,6 @@ const Signup = () => {
                 <option value="EEE">EEE</option>
                 <option value="ECE">ECE</option>
               </Form.Select>
-              <Form.Select
-                onChange={(e) => setSem(e.target.value)}
-                className="mb-3"
-              >
-                <option>Choose Semester</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-              </Form.Select>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Control
-                  type="text"
-                  placeholder="Register Number"
-                  onChange={(e) => setRegNum(e.target.value)}
-                  required="required"
-                />
-              </Form.Group>
             </div>
           )}
 

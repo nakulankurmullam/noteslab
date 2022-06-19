@@ -3,7 +3,7 @@ import "./Login.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import GoogleButton from "react-google-button";
+import { useUserAuth } from "../Context/userAuthContext";
 
 const Login = () => {
   const { pathname } = useLocation();
@@ -11,23 +11,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { logIn } = useUserAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      navigate("//");
+      await logIn(email, password);
+      navigate(pathname === "/student-login" ? "/student " : "/faculty ")
     } catch (err) {
       setError(err.message);
-    }
-  };
-
-  const handleGoogleSignIn = async (e) => {
-    e.preventDefault();
-    try {
-      navigate("/student");
-    } catch (error) {
-      console.log(error.message);
     }
   };
 
@@ -56,20 +49,13 @@ const Login = () => {
             />
           </Form.Group>
 
-          <div className="d-grid gap-2">
+          <div className="d-grid ">
             <Button id="login-btn" variant="primary" type="Submit">
               Log In
             </Button>
           </div>
         </Form>
         <hr />
-        <div>
-          <GoogleButton
-            className="g-btn"
-            type="dark"
-            onClick={handleGoogleSignIn}
-          />
-        </div>
       </div>
       <div className="p-4 box mt-3 text-center">
         Don't have an account? <Link to="/signup">Sign up</Link>
