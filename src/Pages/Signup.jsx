@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./Signup.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
-import { Button} from "react-bootstrap";
-import {useUserAuth} from "../Context/userAuthContext"
+import { Button } from "react-bootstrap";
+import { useUserAuth } from "../Context/userAuthContext";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ const Signup = () => {
   const [isStudent, setIsStudent] = useState(true);
   const [sem, setSem] = useState("");
   const navigate = useNavigate();
-  const {signUp} = useUserAuth()
+  const { signUp } = useUserAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ const Signup = () => {
     }
     setError("");
     try {
-      await signUp(email, password)
+      await signUp(email, password);
       navigate("/");
     } catch (err) {
       setError(err.message);

@@ -5,6 +5,7 @@ import Landing from "./Pages/Landing";
 import Student from "./Pages/Student";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
+import ProtectedRoute from "./ProtectedRoute";
 import { UserAuthContextProvider } from "./Context/userAuthContext";
 
 function App() {
@@ -17,8 +18,22 @@ function App() {
             <Route path="/student-login" element={<Login />} />
             <Route path="/faculty-login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/faculty" element={<Faculty />} />
-            <Route path="/student" element={<Student />} />
+            <Route
+              path="/faculty"
+              element={
+                <ProtectedRoute>
+                  <Faculty />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/student"
+              element={
+                <ProtectedRoute>
+                  <Student />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </UserAuthContextProvider>
       </Router>
