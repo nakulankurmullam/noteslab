@@ -18,7 +18,7 @@ const Login = () => {
     setError("");
     try {
       await logIn(email, password);
-      navigate(pathname === "/student-login" ? "/student " : "/faculty ")
+      navigate(pathname === "/student-login" ? "/student " : "/faculty ");
     } catch (err) {
       setError(err.message);
     }

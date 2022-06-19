@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from "../Context/userAuthContext";
+import { useUserDetail } from "../Context/userDBContext";
+import { useUsrGen } from "../Context/userGenContext";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +17,9 @@ const Signup = () => {
   const [isStudent, setIsStudent] = useState(true);
   const [sem, setSem] = useState("");
   const navigate = useNavigate();
-  const { signUp } = useUserAuth();
+  const { usrType } = useUsrGen();
+  const { signUp, user } = useUserAuth();
+  const { addFaculty, addStudent } = useUserDetail();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,8 +39,14 @@ const Signup = () => {
     setError("");
     try {
       await signUp(email, password);
+      if (isStudent) {
+        await addStudent(userName, regNum, dept, sem);
+      } else {
+        await addFaculty(userName, userName);
+      }
       navigate("/");
     } catch (err) {
+      console.log(err);
       setError(err.message);
     }
   };
@@ -57,7 +67,7 @@ const Signup = () => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formBasicText">
             <Form.Control
               type="text"
               placeholder="User Name"
@@ -128,7 +138,7 @@ const Signup = () => {
                 <option value="7">7</option>
                 <option value="8">8</option>
               </Form.Select>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3" controlId="formBasicReg">
                 <Form.Control
                   type="text"
                   placeholder="Register Number"
