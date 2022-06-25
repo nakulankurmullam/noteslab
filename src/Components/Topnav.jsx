@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Topnav.css";
 import Profile from "./SubComponents/Profile";
 import Search from "./SubComponents/Search";
-import { useUsrGen } from "../Context/userGenContext";
+import CreateClass from "./SubComponents/CreateClass";
 
 function Topnav() {
-  const { usrType } = useUsrGen();
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <nav class="topnav">
-        <div class="topnav-items" id="profile-info">
+      <nav className="topnav">
+        <div className="topnav-items" id="profile-info">
           <Profile />
         </div>
-        <div class="topnav-items" id="search-btn">
+        <div className="topnav-items" id="search-btn">
           <Search />
         </div>
-        <div class="topnav-items">
-          <button id="join-create">{usrType === "student"?"join":"create"} new class</button>
+        <div className="topnav-items">
+          <button
+            onClick={() => {
+              setShowModal(true);
+            }}
+            id="join-create"
+          >
+            {"faculty" === "student" ? "join" : "create"} new class
+          </button>
+          <CreateClass
+            show={showModal}
+            onHide={() => {
+              setShowModal(false);
+            }}
+          />
         </div>
       </nav>
     </>
