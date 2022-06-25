@@ -4,6 +4,7 @@ import Topnav from "../Components/Topnav";
 import Scroller from "../Components/Scroller";
 import Selections from "../Components/Selections";
 import UploadMaterial from "../Components/UploadMaterial";
+import TestScore from "../Components/TestScore";
 import PostWork from "../Components/PostWork";
 
 function Faculty() {
@@ -16,7 +17,8 @@ function Faculty() {
         <Row>
           <Col>
             {/* <Scroller /> */}
-            <PostWork />
+            {/* <PostWork /> */}
+            <TestScore />
             {/* <UploadMaterial /> */}
           </Col>
           <Col>

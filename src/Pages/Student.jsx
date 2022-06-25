@@ -3,6 +3,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import Topnav from "../Components/Topnav";
 import Scroller from "../Components/Scroller";
 import Selections from "../Components/Selections";
+import Submission from "../Components/Submission";
 
 function Student() {
   return (
@@ -13,7 +14,8 @@ function Student() {
         </Row>
         <Row>
           <Col>
-            <Scroller />
+            {/* <Scroller /> */}
+            <Submission/>
           </Col>
           <Col>
             <Selections />

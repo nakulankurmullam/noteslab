@@ -3,9 +3,11 @@ import "./Topnav.css";
 import Profile from "./SubComponents/Profile";
 import Search from "./SubComponents/Search";
 import CreateClass from "./SubComponents/CreateClass";
+import JoinClass from "./SubComponents/JoinClass";
 
 function Topnav() {
-  const [showModal, setShowModal] = useState(false);
+  const [showCreate, setShowCreate] = useState(false);
+  const [showJoin, setShowJoin] = useState(false);
   return (
     <>
       <nav className="topnav">
@@ -18,18 +20,19 @@ function Topnav() {
         <div className="topnav-items">
           <button
             onClick={() => {
-              setShowModal(true);
+              setShowJoin(true);
             }}
             id="join-create"
           >
-            {"faculty" === "student" ? "join" : "create"} new class
+            {"student" === "student" ? "join" : "create"} new class
           </button>
           <CreateClass
-            show={showModal}
+            show={showCreate}
             onHide={() => {
-              setShowModal(false);
+              setShowCreate(false);
             }}
           />
+          <JoinClass show={showJoin} onHide={() => {setShowJoin(false);}}/>
         </div>
       </nav>
     </>

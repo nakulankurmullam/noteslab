@@ -20,8 +20,8 @@ function CreateClass(props) {
             Create New Class Room
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form>
+        <Form>
+          <Modal.Body>
             <Form.Group className="mb-3">
               <Form.Label>Class Name:</Form.Label>
               <Form.Control
@@ -29,22 +29,23 @@ function CreateClass(props) {
                 placeholder="eg:Control System EEE B"
               ></Form.Control>
             </Form.Group>
-            <Button id="class_code_btn" type="submit">
-              Create Class Code
-            </Button>
+
             <Alert variant="success">
               Copy this text: asfjasjdfajskdfk
               <CopyToClipboard text={"asfjasjdfajskdfk"}>
                 <button className="fa-solid fa-copy"></button>
               </CopyToClipboard>
             </Alert>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button id="modal-close" onClick={props.onHide}>
-            Close
-          </Button>
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button id="class_code_btn" variant="outline-success" type="submit">
+              Create Class Code
+            </Button>
+            <Button id="modal-close" onClick={props.onHide}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Form>
       </Modal>
     </>
   );
