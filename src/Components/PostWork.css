@@ -1,0 +1,11 @@
+#post_wrk_cont{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  height: 100%;
+}
+#pst-wrk-btn{
+  background-color: #c97800;
+  border:none;
+}

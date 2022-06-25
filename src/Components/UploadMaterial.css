@@ -1,4 +1,16 @@
-#up_mat_btn{
+#up_mat_btn {
   background-color: #c97800;
-  border:none;
+  border: none;
+}
+.up_mat_cont {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  height: 100%;
+}
+#up_mat_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

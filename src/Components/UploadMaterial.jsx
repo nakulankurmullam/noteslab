@@ -5,26 +5,26 @@ import "./UploadMaterial.css"
 
 function UploadMaterial() {
   return (
-    <>
-    <Form>
-      <Form.Group>
+    <div className="up_mat_cont">
+    <Form id="up_mat_form">
+      <Form.Group className="mb-5">
         <Form.Label>Name of Material</Form.Label>
-        <Form.Control placeholder="eg: control system mod 1"></Form.Control>
+        <Form.Control size="lg" placeholder="eg: control system mod 1"></Form.Control>
       </Form.Group>
-      <Form.Group>
-        <Form.Select>
+      <Form.Group className="mb-5">
+        <Form.Select size="lg">
           <option value="">Select Class</option>
           <option value="1">Physics</option>
           <option value="2">Mathematics</option>
         </Form.Select>
       </Form.Group>
-      <Form.Group>
+      <Form.Group className="mb-5">
         <Form.Label>Choose File:</Form.Label>
-        <Form.Control type="file"></Form.Control>
+        <Form.Control size="lg" type="file"></Form.Control>
       </Form.Group>
-      <Button id="up_mat_btn" type="submit">Upload <i className="fa-solid fa-upload"></i></Button>
+      <Button size="lg" id="up_mat_btn" type="submit">Upload <i className="fa-solid fa-upload"></i></Button>
     </Form>
-    </> 
+    </div> 
   )
 }
 

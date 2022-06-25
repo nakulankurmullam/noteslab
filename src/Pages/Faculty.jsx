@@ -4,6 +4,7 @@ import Topnav from "../Components/Topnav";
 import Scroller from "../Components/Scroller";
 import Selections from "../Components/Selections";
 import UploadMaterial from "../Components/UploadMaterial";
+import PostWork from "../Components/PostWork";
 
 function Faculty() {
   return (
@@ -15,7 +16,8 @@ function Faculty() {
         <Row>
           <Col>
             {/* <Scroller /> */}
-            <UploadMaterial />
+            <PostWork />
+            {/* <UploadMaterial /> */}
           </Col>
           <Col>
             <Selections />
