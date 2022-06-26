@@ -5,7 +5,6 @@ import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from "../Context/userAuthContext";
 import { useUserDetail } from "../Context/userDBContext";
-import { useUsrGen } from "../Context/userGenContext";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -17,8 +16,7 @@ const Signup = () => {
   const [isStudent, setIsStudent] = useState(true);
   const [sem, setSem] = useState("");
   const navigate = useNavigate();
-  const { usrType } = useUsrGen();
-  const { signUp, user } = useUserAuth();
+  const { signUp, uploadUserName } = useUserAuth();
   const { addFaculty, addStudent } = useUserDetail();
 
   const handleSubmit = async (e) => {
@@ -39,6 +37,7 @@ const Signup = () => {
     setError("");
     try {
       await signUp(email, password);
+      await uploadUserName(userName);
       if (isStudent) {
         await addStudent(userName, regNum, dept, sem);
       } else {

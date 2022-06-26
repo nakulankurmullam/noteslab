@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 
@@ -11,13 +12,18 @@ const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState({});
-  const [isStudent, setIsStudent] = useState(true);
 
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
   function signUp(email, password) {
     return createUserWithEmailAndPassword(auth, email, password);
+  }
+
+  function uploadUserName(u_name) {
+    return updateProfile(auth.currentUser, {
+      displayName: u_name,
+    });
   }
   function logOut() {
     return signOut(auth);
@@ -35,7 +41,9 @@ export function UserAuthContextProvider({ children }) {
   }, []);
 
   return (
-    <userAuthContext.Provider value={{ user, logIn, signUp, logOut, setIsStudent }}>
+    <userAuthContext.Provider
+      value={{ user, logIn, signUp, logOut, uploadUserName }}
+    >
       {children}
     </userAuthContext.Provider>
   );
