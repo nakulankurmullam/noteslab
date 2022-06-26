@@ -4,7 +4,7 @@ import { useUsrGen } from "../Context/userGenContext";
 
 function Selections() {
   const { usrType } = useUsrGen();
-  const isStudent = usrType === "student";
+  const isStudent = "student" === "student";
   return (
     <div id="selections">
       <button className="selection-btns">

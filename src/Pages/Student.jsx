@@ -4,6 +4,7 @@ import Topnav from "../Components/Topnav";
 import Scroller from "../Components/Scroller";
 import Selections from "../Components/Selections";
 import Submission from "../Components/Submission";
+import ViewMark from "../Components/ViewMark";
 
 function Student() {
   return (
@@ -15,7 +16,8 @@ function Student() {
         <Row>
           <Col>
             {/* <Scroller /> */}
-            <Submission/>
+            {/* <Submission/> */}
+            <ViewMark />
           </Col>
           <Col>
             <Selections />
