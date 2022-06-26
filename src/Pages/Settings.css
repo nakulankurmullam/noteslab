@@ -1,0 +1,15 @@
+.sett_cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height:100vh;  
+}
+#sett_foot{
+  display: flex;
+  justify-content: space-between;
+}
+#sett_pro_pic{
+  height:10vh;
+  width:10vh; 
+}

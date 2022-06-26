@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Topnav.css";
 import Profile from "./SubComponents/Profile";
 import Search from "./SubComponents/Search";
@@ -8,10 +9,15 @@ import JoinClass from "./SubComponents/JoinClass";
 function Topnav() {
   const [showCreate, setShowCreate] = useState(false);
   const [showJoin, setShowJoin] = useState(false);
+  const nav = useNavigate();
   return (
     <>
       <nav className="topnav">
-        <div className="topnav-items" id="profile-info">
+        <div
+          onClick={() => nav("/settings")}
+          className="topnav-items"
+          id="profile-info"
+        >
           <Profile />
         </div>
         <div className="topnav-items" id="search-btn">
@@ -32,7 +38,12 @@ function Topnav() {
               setShowCreate(false);
             }}
           />
-          <JoinClass show={showJoin} onHide={() => {setShowJoin(false);}}/>
+          <JoinClass
+            show={showJoin}
+            onHide={() => {
+              setShowJoin(false);
+            }}
+          />
         </div>
       </nav>
     </>

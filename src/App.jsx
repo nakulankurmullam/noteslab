@@ -9,6 +9,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import { UserAuthContextProvider } from "./Context/userAuthContext";
 import { UserDetailsContextProvider } from "./Context/userDBContext";
 import { UserGenContextProvider } from "./Context/userGenContext";
+import Settings from "./Pages/Settings";
 
 function App() {
   return (
@@ -35,6 +36,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <Student />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/settings"
+                  element={
+                    <ProtectedRoute>
+                      <Settings isStudent={true} />
                     </ProtectedRoute>
                   }
                 />

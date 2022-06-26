@@ -17,7 +17,7 @@ function Student() {
           <Col>
             {/* <Scroller /> */}
             {/* <Submission/> */}
-            <ViewMark />
+            {/* <ViewMark /> */}
           </Col>
           <Col>
             <Selections />
