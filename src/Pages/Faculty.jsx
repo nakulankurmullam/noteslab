@@ -9,10 +9,10 @@ import PostWork from "../Components/PostWork";
 
 const retView = (val) => {
   let comp = <Scroller />;
-  if (val === comp) return comp;
   if (val === "pbs") return <TestScore />;
   if (val === "upm") return <UploadMaterial />;
   if (val === "pnw") return <PostWork />;
+  return comp;
 };
 
 function Faculty() {
@@ -21,7 +21,7 @@ function Faculty() {
     <>
       <Container>
         <Row>
-          <Topnav />
+          <Topnav mode="faculty"/>
         </Row>
         <Row>
           <Col>{retView(onView)}</Col>

@@ -6,7 +6,7 @@ import Search from "./SubComponents/Search";
 import CreateClass from "./SubComponents/CreateClass";
 import JoinClass from "./SubComponents/JoinClass";
 
-function Topnav() {
+function Topnav({mode}) {
   const [showCreate, setShowCreate] = useState(false);
   const [showJoin, setShowJoin] = useState(false);
   const nav = useNavigate();
@@ -26,11 +26,14 @@ function Topnav() {
         <div className="topnav-items">
           <button
             onClick={() => {
+              if(mode === "faculty")
+              setShowCreate(true);
+              else
               setShowJoin(true);
             }}
             id="join-create"
           >
-            {"student" === "student" ? "join" : "create"} new class
+            {mode === "student" ? "join" : "create"} new class
           </button>
           <CreateClass
             show={showCreate}

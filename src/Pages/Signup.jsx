@@ -36,12 +36,12 @@ const Signup = () => {
     }
     setError("");
     try {
-      await signUp(email, password);
+      let res = await signUp(email, password);
       await uploadUserName(userName);
       if (isStudent) {
         await addStudent(userName, regNum, dept, sem);
       } else {
-        await addFaculty(userName, userName);
+        await addFaculty(userName, res?.uid);
       }
       navigate("/");
     } catch (err) {

@@ -5,14 +5,14 @@ import Scroller from "../Components/Scroller";
 import Selections from "../Components/Selections";
 import Submission from "../Components/Submission";
 import ViewMark from "../Components/ViewMark";
-import Calc from "../Components/SubComponents/Calc";
+import Calc from "../Components/Calc";
 
 const retView = (val) => {
   let comp = <Scroller />;
-  if (val === comp) return comp;
   if (val === "gpa") return <Calc />;
   if (val === "wsb") return <Submission />;
   if (val === "vim") return <ViewMark />;
+  return comp
 };
 
 function Student() {
@@ -21,7 +21,7 @@ function Student() {
     <>
       <Container>
         <Row>
-          <Topnav />
+          <Topnav mode="student" />
         </Row>
         <Row>
           <Col>{retView(onView)}</Col>
