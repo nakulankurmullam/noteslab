@@ -8,7 +8,7 @@ function TestScore() {
   const [showList, setShowList] = useState(false);
   const handleSubmit = (e) => {};
   return (
-    <div clasName="score_up_cont">
+    <div className="score_up_cont">
       <h2>Publish Test Score</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group>

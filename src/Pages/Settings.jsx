@@ -1,41 +1,51 @@
 import React, { useState } from "react";
 import "./Settings.css";
-import NFTmonke from "../Assets/NFTmonke.png";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import { useNavigate } from "react-router-dom";
 import { useUserAuth } from "../Context/userAuthContext";
+import { useUsrGen } from "../Context/userGenContext";
 
 function Settings({ isStudent }) {
-  const { user, uploadUserName } = useUserAuth();
+  const { profileURL, uploadProfilePic } = useUsrGen();
+  const { user, uploadUserName, logOut } = useUserAuth();
   const [u_name, setUserName] = useState(user.displayName);
+  const [file, setFile] = useState();
   const nav = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await uploadUserName(u_name);
+      if (file) uploadProfilePic(file);
     } catch (err) {
       console.error(err);
     }
   };
+  const handleLogOut = async (e) => {
+    if (confirm("Are you sure you want to log out ?")) logOut();
+  };
   return (
     <div className="sett_cont">
       <div id="sett_pro_pic">
-        <Image size="sm" src={NFTmonke} roundedCircle fluid />
+        <Image size="sm" src={profileURL} roundedCircle fluid />
         {u_name}
       </div>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="m-3">
           <Form.Label>Change Profile Picture:</Form.Label>
-          <Form.Control type="file"></Form.Control>
+          <Form.Control
+            onChange={(e) => {
+              setFile(e.target.files[0]);
+            }}
+            type="file"
+          ></Form.Control>
         </Form.Group>
         <Form.Group className="m-3 ">
           <Form.Label>User Name: </Form.Label>
           <Form.Control
             onChange={(e) => {
               setUserName(e.target.value);
-              console.log(e.target.value);
             }}
             size="lg"
             type="text"
@@ -75,14 +85,9 @@ function Settings({ isStudent }) {
             }}
             variant="outline-secondary"
           >
-            Cancel
+            Back
           </Button>
-          <Button
-            variant="danger"
-            onClick={() => {
-              let yes = confirm("Are you sure you want to Logout");
-            }}
-          >
+          <Button variant="danger" onClick={handleLogOut}>
             LogOut
           </Button>
         </div>

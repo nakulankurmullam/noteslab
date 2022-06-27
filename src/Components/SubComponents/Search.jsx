@@ -3,7 +3,7 @@ import "./Search.css";
 
 function Search() {
   return (
-      <div class="srch-wrap">
+      <div className="srch-wrap">
         <i className="fa-solid fa-search"></i>
         <input type="text" id="srch-ip" placeholder='enter subject code'/>
       </div>

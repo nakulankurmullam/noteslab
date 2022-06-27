@@ -15,8 +15,8 @@ function App() {
   return (
     <>
       <Router>
-        <UserGenContextProvider>
-          <UserAuthContextProvider>
+        <UserAuthContextProvider>
+          <UserGenContextProvider>
             <UserDetailsContextProvider>
               <Routes>
                 <Route path="/" element={<Landing />} />
@@ -49,8 +49,8 @@ function App() {
                 />
               </Routes>
             </UserDetailsContextProvider>
-          </UserAuthContextProvider>
-        </UserGenContextProvider>
+          </UserGenContextProvider>
+        </UserAuthContextProvider>
       </Router>
     </>
   );
