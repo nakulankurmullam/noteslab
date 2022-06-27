@@ -9,7 +9,7 @@ const userGenContext = createContext();
 export function UserGenContextProvider({ children }) {
   const { user } = useUserAuth();
   const [usrType, setUserType] = useState(null);
-  const [profileURL, setProfileURL] = useState(
+  const [profilePic, setProfilePic] = useState(
     "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
   );
   async function uploadProfilePic(photo) {
@@ -17,15 +17,16 @@ export function UserGenContextProvider({ children }) {
     alert("changes may take a few minutes to apply");
     await uploadBytesResumable(profRef, photo);
     const _photoURL = await getDownloadURL(profRef);
-    await updateProfile(user, {_photoURL});
-    setProfileURL(_photoURL);
+    await updateProfile(user, {photoURL:_photoURL});
+    console.log(_photoURL)
+    setProfilePic(_photoURL);
     alert("successfully uploaded profile picutre");
   }
   return (
     <userGenContext.Provider
       value={{
-        profileURL,
-        setProfileURL,
+        profilePic,
+        setProfilePic,
         uploadProfilePic,
         usrType,
         setUserType,

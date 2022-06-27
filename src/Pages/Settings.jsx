@@ -8,7 +8,7 @@ import { useUserAuth } from "../Context/userAuthContext";
 import { useUsrGen } from "../Context/userGenContext";
 
 function Settings({ isStudent }) {
-  const { profileURL, uploadProfilePic } = useUsrGen();
+  const { profilePic, uploadProfilePic } = useUsrGen();
   const { user, uploadUserName, logOut } = useUserAuth();
   const [u_name, setUserName] = useState(user.displayName);
   const [file, setFile] = useState();
@@ -28,14 +28,15 @@ function Settings({ isStudent }) {
   return (
     <div className="sett_cont">
       <div id="sett_pro_pic">
-        <Image size="sm" src={profileURL} roundedCircle fluid />
-        {u_name}
+        <Image size="sm" src={user?.photoURL || profilePic} roundedCircle fluid />
+        {user.displayName}
       </div>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="m-3">
           <Form.Label>Change Profile Picture:</Form.Label>
-          <Form.Control
+          <Form.Control 
             onChange={(e) => {
+
               setFile(e.target.files[0]);
             }}
             type="file"

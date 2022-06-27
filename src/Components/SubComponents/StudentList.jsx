@@ -7,30 +7,30 @@ function StudentList() {
   return (
     <>
       <ListGroup className="mb-3" id="scoreList">
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
-        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" value={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
+        <ListGroup.Item>Student 1 <input type="number" className="std_lst_inp" defaultValue={pMark} /> of {MAX_MARK}</ListGroup.Item>
       </ListGroup>
     </>
   );
