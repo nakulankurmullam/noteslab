@@ -10,10 +10,16 @@ function JoinClass(props) {
   const [code, setCode] = useState(null);
   const [error, setError] = useState(null);
   const { joinClass } = useUserDetail();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!code) return;
-    joinClass(code);
+    try {
+      await joinClass(code);
+      props.onHide();
+    } catch (err) {
+      setError(err.message);
+      console.error(err);
+    }
   };
   return (
     <>

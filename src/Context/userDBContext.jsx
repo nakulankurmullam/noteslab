@@ -7,6 +7,7 @@ import {
   collection,
   where,
   getDocs,
+  arrayUnion,
 } from "firebase/firestore";
 import { useUserAuth } from "./userAuthContext";
 import { db } from "../firebaseConfig";
@@ -34,7 +35,7 @@ export function UserDetailsContextProvider({ children }) {
 
   async function addClass(code, title) {
     await updateDoc(doc(db, "faculty", user.uid), {
-      classes: [code],
+      classes: arrayUnion(code),
     });
     // await setDoc(doc(db, "faculty", user.uid), {
     //   classes: { title: code },
@@ -44,10 +45,18 @@ export function UserDetailsContextProvider({ children }) {
       code,
     });
   }
+  
   async function joinClass(code) {
-    const q = query(collection(db,"class"), where("code", "==", code));
+    const q = query(collection(db, "class"), where("code", "==", code));
     const snapshot = await getDocs(q);
-    console.log(snapshot.docs[0].data());
+    const classTitle = snapshot.docs[0].data().title;
+    console.log(classTitle);
+    updateDoc(doc(db, "student", user.uid), {
+      classes: arrayUnion(code),
+    });
+    return updateDoc(doc(db, "class", classTitle), {
+      students: arrayUnion(user.uid),
+    });
   }
 
   return (
