@@ -22,7 +22,6 @@ function CreateClass(props) {
     }catch(err){
       console.error(err);
     }
-    
     setCode(tmp);
   };
 

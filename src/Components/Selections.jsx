@@ -1,6 +1,5 @@
 import React from "react";
 import "./Selection.css";
-import { useUsrGen } from "../Context/userGenContext";
 
 function Selections({ mode, setOnView }) {
   return mode === "faculty" ? (

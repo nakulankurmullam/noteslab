@@ -12,11 +12,11 @@ const retView = (val) => {
   if (val === "gpa") return <Calc />;
   if (val === "wsb") return <Submission />;
   if (val === "vim") return <ViewMark />;
-  return comp
+  return comp;
 };
 
 function Student() {
-  const [onView, setOnView] = useState();
+  const [onView, setOnView] = useState("");
   return (
     <>
       <Container>
@@ -26,7 +26,7 @@ function Student() {
         <Row>
           <Col>{retView(onView)}</Col>
           <Col>
-            <Selections mode="faculty" setOnView={setOnView} />
+            <Selections mode="student" setOnView={setOnView} />
           </Col>
         </Row>
       </Container>

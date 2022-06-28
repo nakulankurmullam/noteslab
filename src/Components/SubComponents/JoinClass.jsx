@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 import "./JoinClass.css";
+import { useUserDetail } from "../../Context/userDBContext";
 
 function JoinClass(props) {
+  const [code, setCode] = useState(null);
+  const [error, setError] = useState(null);
+  const { joinClass } = useUserDetail();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!code) return;
+    joinClass(code);
+  };
   return (
     <>
       <Modal
@@ -20,17 +30,23 @@ function JoinClass(props) {
         </Modal.Header>
         <Form>
           <Modal.Body>
+            {error && <Alert variant="danger">invalid class code</Alert>}
             <Form.Group>
               <Form.Label>Enter Class Code</Form.Label>
-              <Form.Control type="text" size="lg" placeholder="paste here"></Form.Control>
+              <Form.Control
+                onChange={(e) => {
+                  setCode(e.target.value);
+                }}
+                type="text"
+                size="lg"
+                placeholder="paste here"
+              ></Form.Control>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
             <Button
               id="join_submit"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
+              onClick={handleSubmit}
               type="submit"
               variant="outline-success"
             >

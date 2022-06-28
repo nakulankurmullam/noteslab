@@ -38,16 +38,16 @@ function ViewMark() {
               onClick={() => {
                 setViewMark(true);
               }}
-              variant="danger"
+              variant="outline-success"
               type="submit"
             >
-              Fix Grade
+              View
             </Button>
             <Button
               onClick={() => {
                 setShow(false);
               }}
-              variant="outline-warning"
+              variant="outline-secondary"
             >
               Close
             </Button>

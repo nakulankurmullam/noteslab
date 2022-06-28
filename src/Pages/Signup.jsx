@@ -16,7 +16,7 @@ const Signup = () => {
   const [isStudent, setIsStudent] = useState(true);
   const [sem, setSem] = useState("");
   const navigate = useNavigate();
-  const { signUp, uploadUserName } = useUserAuth();
+  const { signUp, uploadUserName, user } = useUserAuth();
   const { addFaculty, addStudent } = useUserDetail();
 
   const handleSubmit = async (e) => {
@@ -36,12 +36,12 @@ const Signup = () => {
     }
     setError("");
     try {
-      let res = await signUp(email, password);
+      const res = await signUp(email, password);
       await uploadUserName(userName);
       if (isStudent) {
-        await addStudent(userName, regNum, dept, sem);
+        await addStudent(userName, regNum, res?.user.uid, dept, sem);
       } else {
-        await addFaculty(userName, res?.uid);
+        await addFaculty(userName, res?.user.uid);
       }
       navigate("/");
     } catch (err) {
