@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { useUsrGen } from "../Context/userGenContext";
-import { useUserDetail } from "../Context/userDBContext";
 import Topnav from "../Components/Topnav";
 import Scroller from "../Components/Scroller";
 import Selections from "../Components/Selections";
@@ -19,6 +18,7 @@ const retView = (val) => {
 
 function Student() {
   const [onView, setOnView] = useState("");
+  const {classList} = useUsrGen();
   return (
     <>
       <Container>
@@ -28,7 +28,7 @@ function Student() {
         <Row>
           <Col>{retView(onView)}</Col>
           <Col>
-            <Selections mode="student" setOnView={setOnView} />
+            {classList?(<Selections mode="student" setOnView={setOnView} />):("...loading")}
           </Col>
         </Row>
       </Container>

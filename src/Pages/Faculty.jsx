@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import Topnav from "../Components/Topnav";
 import Scroller from "../Components/Scroller";
@@ -28,7 +28,11 @@ function Faculty() {
         <Row>
           <Col>{retView(onView)}</Col>
           <Col>
-            <Selections mode="faculty" setOnView={setOnView} />
+            {classList ? (
+              <Selections mode="faculty" setOnView={setOnView} />
+            ) : (
+              "loading"
+            )}
           </Col>
         </Row>
       </Container>
