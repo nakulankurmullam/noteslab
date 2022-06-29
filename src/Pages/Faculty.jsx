@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import Topnav from "../Components/Topnav";
 import Scroller from "../Components/Scroller";
@@ -6,6 +6,8 @@ import Selections from "../Components/Selections";
 import UploadMaterial from "../Components/UploadMaterial";
 import TestScore from "../Components/TestScore";
 import PostWork from "../Components/PostWork";
+import { useUserDetail } from "../Context/userDBContext";
+import { useUsrGen } from "../Context/userGenContext";
 
 const retView = (val) => {
   let comp = <Scroller />;
@@ -16,6 +18,7 @@ const retView = (val) => {
 };
 
 function Faculty() {
+
   const [onView, setOnView] = useState("scroll");
   return (
     <>

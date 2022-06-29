@@ -5,8 +5,9 @@ import Profile from "./SubComponents/Profile";
 import Search from "./SubComponents/Search";
 import CreateClass from "./SubComponents/CreateClass";
 import JoinClass from "./SubComponents/JoinClass";
+import { useUserDetail } from "../Context/userDBContext";
 
-function Topnav({mode}) {
+function Topnav({ mode }) {
   const [showCreate, setShowCreate] = useState(false);
   const [showJoin, setShowJoin] = useState(false);
   const nav = useNavigate();
@@ -26,10 +27,8 @@ function Topnav({mode}) {
         <div className="topnav-items">
           <button
             onClick={() => {
-              if(mode === "faculty")
-              setShowCreate(true);
-              else
-              setShowJoin(true);
+              if (mode === "faculty") setShowCreate(true);
+              else setShowJoin(true);
             }}
             id="join-create"
           >

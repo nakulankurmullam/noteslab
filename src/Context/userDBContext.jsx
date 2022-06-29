@@ -19,10 +19,8 @@ const userDetailsContext = createContext();
 
 export function UserDetailsContextProvider({ children }) {
   const { user } = useUserAuth();
-  const { setClassList } = useUsrGen();
   const { pathname } = useLocation();
   const userType = pathname.split("/")[1];
-  console.log(userType);
   function addFaculty(name, facId) {
     return setDoc(doc(db, "faculty", facId), {
       name,
@@ -51,7 +49,7 @@ export function UserDetailsContextProvider({ children }) {
       code,
     });
   }
-
+ 
   async function joinClass(code) {
     const q = query(collection(db, "class"), where("code", "==", code));
     const snapshot = await getDocs(q);
@@ -59,7 +57,7 @@ export function UserDetailsContextProvider({ children }) {
     updateDoc(doc(db, "student", user.uid), {
       classes: arrayUnion(code),
     });
-    return setDoc(doc(db, "class", classTitle), {
+    return updateDoc(doc(db, "class", classTitle), {
       students: arrayUnion(user.uid),
     });
   }
@@ -68,22 +66,18 @@ export function UserDetailsContextProvider({ children }) {
     const arr = [];
     try {
       const data = (await getDoc(doc(db, userType, user.uid))).data();
-      console.log(data);
       const { classes } = data;
-      console.log(classes);
       for (let code of classes) {
         const q = query(collection(db, "class"), where("code", "==", code));
         const resp = await getDocs(q);
-        console.log(resp.docs[0].data()); // {title:'Title of class',code:'2312asdf'}
         arr.push(resp.docs[0].data());
       }
-      console.log(arr);
       return arr;
     } catch (err) {
       console.error(err);
     }
   }
-  
+
   return (
     <userDetailsContext.Provider
       value={{ addFaculty, addStudent, joinClass, addClass, getClassList }}
