@@ -90,13 +90,18 @@ export function UserDetailsContextProvider({ children }) {
   }
 
   async function gradeTest(title) {
-    a
+    
+  }
+
+  async function getSubmissions(){
+
   }
 
   return (
     <userDetailsContext.Provider
       value={{
         gradeTest,
+        getSubmissions,
         addFaculty,
         addStudent,
         joinClass,

@@ -1,35 +1,34 @@
 import React, { useState } from "react";
-import "./TestScore.css";
-import Button from "react-bootstrap/Button";
-import StudentList from "./SubComponents/StudentList";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import "./Submission.css";
 import { useUsrGen } from "../Context/userGenContext";
-import { useUserDetail } from "../Context/userDBContext";
-import Alert from "react-bootstrap/Alert";
+import WorkList from "./SubComponents/WorkList";
 
 function TestScore() {
+  const [showTests, setShowTests] = useState(false);
   const [selClass, setClass] = useState();
-  const [showList, setShowList] = useState(false);
-  const [testName, setTestName] = useState([]);
-  const [selTest, setSelTest] = useState();
-
-  const { showTest } = useUserDetail();
   const { classList } = useUsrGen();
+
   let classes = classList.map((yourClasses) => yourClasses.title);
   classes.unshift("select");
 
-  const handleSubmit = (e) => {};
+  const listWork = () => {
+    const [ret] = classList.filter((el) => el.title === selClass);
+    let works = Boolean(ret?.works.length) ? ret.works : ["No Works"];
+    let tmp = works.filter((work) => work?.type === "test");
+    setShowTests(tmp?.length ? tmp : []);
+  };
+
   return (
-    <div className="score_up_cont">
-      <h2>Publish Test Score</h2>
-      <Form onSubmit={handleSubmit}>
+    <div>
+      <h2>Publish Score</h2>
+      <Form>
         <Form.Group className="mb-3">
-          <Form.Label>Select Class:</Form.Label>
+          <Form.Label>Select Class: </Form.Label>
           <Form.Select
-            onChange={async (e) => {
-              let testArr = await showTest(e.target.value);
-              console.log(testArr);
-              setTestName(["select", ...testArr]);
+            className="mb-3"
+            onChange={(e) => {
               setClass(e.target.value);
             }}
           >
@@ -39,46 +38,11 @@ function TestScore() {
               </option>
             ))}
           </Form.Select>
+          <Button onClick={listWork} variant="outline-warning" className="mb-3">
+            List Assigned Works
+          </Button>
         </Form.Group>
-        {selClass && (
-          <Form.Group>
-            <Form.Label>select test:</Form.Label>
-            <Form.Select
-              onChange={(e) => {
-                setSelTest(e.target.value);
-              }}
-              className="mb-3"
-            >
-              {testName.map((el, i) => (
-                <option key={i} value={el}>
-                  {el}
-                </option>
-              ))}
-            </Form.Select>
-          </Form.Group>
-        )}
-        <Button
-          className="mb-3"
-          type="button"
-          onClick={async () => {
-            await gradeTest(selTest);
-            setShowList(!showList);
-          }}
-          variant="outline-warning"
-          value=""
-          disabled={!selTest}
-        >
-          Grade
-        </Button>
-
-        {showList && (
-          <>
-            <StudentList />
-            <Button type="submit" id="score_upload">
-              Upload
-            </Button>
-          </>
-        )}
+        {showTests && <WorkList list={showTests} />}
       </Form>
     </div>
   );

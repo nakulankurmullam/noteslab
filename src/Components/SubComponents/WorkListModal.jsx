@@ -4,8 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
-function WorkListModal({ heading, onHide, show }) {
-  const DUE_DATE = "12/06/2022";
+function WorkListModal({ heading, due, onHide, show }) {
   return (
     <div>
       <Modal show={show} onHide={onHide} size="lg" centered>
@@ -14,8 +13,8 @@ function WorkListModal({ heading, onHide, show }) {
             {heading}
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Alert variant="warning">Due date: {DUE_DATE}</Alert>
+        <Modal.Body> 
+          <Alert variant="warning">Due date: {due}</Alert>
           <Form.Group>
             <Form.Label>Choose file:</Form.Label>
             <Form.Control size="lg" type="file"></Form.Control>
@@ -25,7 +24,9 @@ function WorkListModal({ heading, onHide, show }) {
           <Button id="wrk_submit_btn" type="submit">
             Upload <i className="fa-solid fa-upload"></i>
           </Button>
-          <Button onClick={onHide}>Close</Button>
+          <Button variant="outline-secondary" onClick={onHide}>
+            Close
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>

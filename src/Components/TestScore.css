@@ -1,8 +1,15 @@
 #scoreList{
   overflow-y: scroll;
-  max-height:54vh;
+  max-height:35vh;
 }
 #score_upload{
   border:none;
   background-color:#c97800;
+}
+
+.mark-btn{
+  background-color: rgb(74, 183, 81) ;
+  color:white;
+  border: none;
+  border-radius:3px;
 }
