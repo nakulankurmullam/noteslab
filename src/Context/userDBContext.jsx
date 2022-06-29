@@ -77,36 +77,16 @@ export function UserDetailsContextProvider({ children }) {
     }
   }
 
-  async function showTest(selClass) {
-    try {
-      const res = await getDoc(doc(db, "class", selClass));
-      let { works } = res.data();
-      console.log(works);
-      let testArr = works.filter((work) => work.type === "test");
-      return testArr?.map((el) => el.title);
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  async function gradeTest(title) {
-    
-  }
-
-  async function getSubmissions(){
-
-  }
+  async function getSubmissions(work) {}
 
   return (
     <userDetailsContext.Provider
       value={{
-        gradeTest,
         getSubmissions,
         addFaculty,
         addStudent,
         joinClass,
         addClass,
-        showTest,
         getClassList,
       }}
     >

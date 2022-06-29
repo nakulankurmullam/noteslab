@@ -41,8 +41,8 @@ function Submission() {
             List Assigned Works
           </Button>
         </Form.Group>
-        {showWork && <WorkList list={showWork} />}
       </Form>
+      {showWork && <WorkList list={showWork} />}
     </div>
   );
 }

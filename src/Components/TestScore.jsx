@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Submission.css";
 import { useUsrGen } from "../Context/userGenContext";
-import WorkList from "./SubComponents/WorkList";
+import TestScoreList from "./SubComponents/TestScoreList";
 
 function TestScore() {
   const [showTests, setShowTests] = useState(false);
@@ -42,7 +42,7 @@ function TestScore() {
             List Assigned Works
           </Button>
         </Form.Group>
-        {showTests && <WorkList list={showTests} />}
+        {showTests && <TestScoreList list={showTests} />}
       </Form>
     </div>
   );

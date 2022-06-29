@@ -6,7 +6,6 @@ import Selections from "../Components/Selections";
 import UploadMaterial from "../Components/UploadMaterial";
 import TestScore from "../Components/TestScore";
 import PostWork from "../Components/PostWork";
-import { useUserDetail } from "../Context/userDBContext";
 import { useUsrGen } from "../Context/userGenContext";
 
 const retView = (val) => {
@@ -18,7 +17,7 @@ const retView = (val) => {
 };
 
 function Faculty() {
-
+  const { classList } = useUsrGen();
   const [onView, setOnView] = useState("scroll");
   return (
     <>

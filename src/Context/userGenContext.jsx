@@ -64,9 +64,22 @@ export function UserGenContextProvider({ children }) {
     alert("upload successfull");
   }
 
+  async function submitWork(workName,file) {
+    const submissionRef = ref(storage,`submissions/${user.uid}/${workName}`)
+    let downloadURL = ''
+    try{
+      await uploadBytesResumable(submissionRef, file);
+      downloadURL = await getDownloadURL(submissionRef);
+      await updateDoc(doc(db, "works",workName),{
+        submitted:arrayUnion({uid:user.uid,downloadURL})
+      })
+    }catch(err){console.error(err)}
+  }
+
   return (
     <userGenContext.Provider
       value={{
+        submitWork,
         profilePic,
         setProfilePic,
         uploadMaterial,
