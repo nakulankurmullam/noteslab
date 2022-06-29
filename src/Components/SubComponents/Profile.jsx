@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Profile.css";
 import { useUserAuth } from "../../Context/userAuthContext";
 import { useUsrGen } from "../../Context/userGenContext";

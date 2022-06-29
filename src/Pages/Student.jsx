@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
+import { useUsrGen } from "../Context/userGenContext";
 import Topnav from "../Components/Topnav";
 import Scroller from "../Components/Scroller";
 import Selections from "../Components/Selections";
@@ -16,6 +17,7 @@ const retView = (val) => {
 };
 
 function Student() {
+  const { classList } = useUsrGen();
   const [onView, setOnView] = useState("");
   return (
     <>

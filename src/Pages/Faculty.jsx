@@ -21,7 +21,7 @@ function Faculty() {
     <>
       <Container>
         <Row>
-          <Topnav mode="faculty"/>
+          <Topnav mode="faculty" />
         </Row>
         <Row>
           <Col>{retView(onView)}</Col>
