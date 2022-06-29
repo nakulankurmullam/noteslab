@@ -7,7 +7,8 @@ import { useUsrGen } from "../Context/userGenContext";
 
 function UploadMaterial() {
   const { classList, uploadMaterial } = useUsrGen();
-  let classes = classList.map((yourClasses) => yourClasses.title);
+  let classes = ["..loading"]
+  classes = classList.map((yourClasses) => yourClasses.title);
   classes.unshift("select")
 
   const [fileName, setFileName] = useState();

@@ -11,7 +11,6 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { useUserAuth } from "./userAuthContext";
-import { useUsrGen } from "./userGenContext";
 import { db } from "../firebaseConfig";
 import { useLocation } from "react-router-dom";
 
@@ -49,7 +48,7 @@ export function UserDetailsContextProvider({ children }) {
       code,
     });
   }
- 
+
   async function joinClass(code) {
     const q = query(collection(db, "class"), where("code", "==", code));
     const snapshot = await getDocs(q);
@@ -78,9 +77,33 @@ export function UserDetailsContextProvider({ children }) {
     }
   }
 
+  async function showTest(selClass) {
+    try {
+      const res = await getDoc(doc(db, "class", selClass));
+      let { works } = res.data();
+      console.log(works);
+      let testArr = works.filter((work) => work.type === "test");
+      return testArr?.map((el) => el.title);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function gradeTest(title) {
+    a
+  }
+
   return (
     <userDetailsContext.Provider
-      value={{ addFaculty, addStudent, joinClass, addClass, getClassList }}
+      value={{
+        gradeTest,
+        addFaculty,
+        addStudent,
+        joinClass,
+        addClass,
+        showTest,
+        getClassList,
+      }}
     >
       {children}
     </userDetailsContext.Provider>

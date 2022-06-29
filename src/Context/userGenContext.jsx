@@ -1,6 +1,6 @@
 import React, { useContext, useState, createContext } from "react";
 import { getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
-import { updateDoc, doc, arrayUnion } from "firebase/firestore";
+import { setDoc, updateDoc, doc, arrayUnion } from "firebase/firestore";
 import { storage, db } from "../firebaseConfig";
 import { useUserAuth } from "./userAuthContext";
 import { updateProfile } from "firebase/auth";
@@ -53,6 +53,11 @@ export function UserGenContextProvider({ children }) {
           date,
         }),
       });
+      await setDoc(
+        doc(db, "works", name),
+        { type, downloadURL, due: date, submitted: [] },
+        { merge: true }
+      );
     } catch (err) {
       console.error(err);
     }

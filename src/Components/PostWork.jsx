@@ -4,10 +4,13 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import "./PostWork.css";
 import { useUsrGen } from "../Context/userGenContext";
+import { useUserDetail } from "../Context/userDBContext";
 
 function PostWork() {
-  const { classList, postNewWork } = useUsrGen();
-  let classes = classList.map((yourClasses) => yourClasses.title);
+  const { classList } = useUsrGen();
+  const { showTest } = useUserDetail();
+  let classes = ["...loading"];
+  classes = classList.map((yourClasses) => yourClasses.title);
   classes.unshift("select");
 
   const [fileName, setFileName] = useState();
@@ -18,7 +21,7 @@ function PostWork() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-    console.log(selectedClass);
+    console.log(type);
     e.preventDefault();
     setLoading(true);
     await postNewWork(fileName, selectedClass, type, date, file);
@@ -73,9 +76,7 @@ function PostWork() {
             }}
             size="lg"
           >
-            <option value="" disabled>
-              select
-            </option>
+            <option value="">select</option>
             <option value="test">Test</option>
             <option value="assignment">Assignment</option>
             <option value="misc">Others</option>
