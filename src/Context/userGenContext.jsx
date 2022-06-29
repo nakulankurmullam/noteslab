@@ -1,11 +1,6 @@
 import React, { useContext, useState, createContext } from "react";
-import {
-  getDownloadURL,
-  arrayUnion,
-  uploadBytesResumable,
-  ref,
-} from "firebase/storage";
-import { updateDoc, doc } from "firebase/firestore";
+import { getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
+import { updateDoc, doc, arrayUnion } from "firebase/firestore";
 import { storage, db } from "../firebaseConfig";
 import { useUserAuth } from "./userAuthContext";
 import { updateProfile } from "firebase/auth";
@@ -32,7 +27,6 @@ export function UserGenContextProvider({ children }) {
   }
 
   async function uploadMaterial(name, selClass, file) {
-    console.log(selClass);
     const uploadRef = ref(storage, `uploads/${user.uid}/${name}`);
     await uploadBytesResumable(uploadRef, file);
     const downloadURL = await getDownloadURL(uploadRef);
@@ -46,8 +40,23 @@ export function UserGenContextProvider({ children }) {
     alert("upload successfull");
   }
 
-  async function postNewWork(){
-    
+  async function postNewWork(name, selClass, type, date, file) {
+    const postWorkRef = ref(storage, `works/${user.uid}/${name}`);
+    await uploadBytesResumable(postWorkRef, file);
+    const downloadURL = await getDownloadURL(postWorkRef);
+    try {
+      await updateDoc(doc(db, "class", selClass), {
+        works: arrayUnion({
+          title: name,
+          downloadURL,
+          type,
+          date,
+        }),
+      });
+    } catch (err) {
+      console.error(err);
+    }
+    alert("upload successfull");
   }
 
   return (
@@ -56,6 +65,7 @@ export function UserGenContextProvider({ children }) {
         profilePic,
         setProfilePic,
         uploadMaterial,
+        postNewWork,
         uploadProfilePic,
         setUserType,
         userType,
