@@ -10,7 +10,7 @@ function TestScore() {
   const [selClass, setClass] = useState();
   const { classList } = useUsrGen();
 
-  let classes = classList.map((yourClasses) => yourClasses.title);
+  let classes = classList.map((el) => el.title);
   classes.unshift("select");
 
   const listWork = () => {
@@ -42,8 +42,8 @@ function TestScore() {
             List Assigned Works
           </Button>
         </Form.Group>
-        {showTests && <TestScoreList list={showTests} />}
       </Form>
+      {showTests && <TestScoreList list={showTests} />}
     </div>
   );
 }

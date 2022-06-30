@@ -7,7 +7,7 @@ import { useUsrGen } from "../Context/userGenContext";
 import { useUserDetail } from "../Context/userDBContext";
 
 function PostWork() {
-  const { classList } = useUsrGen();
+  const { postNewWork, classList } = useUsrGen();
   const { showTest } = useUserDetail();
   let classes = ["...loading"];
   classes = classList.map((yourClasses) => yourClasses.title);

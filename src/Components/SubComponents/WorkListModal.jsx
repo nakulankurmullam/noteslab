@@ -24,7 +24,6 @@ function WorkListModal({ heading, due, onHide, show }) {
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
               {heading}
-              
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>

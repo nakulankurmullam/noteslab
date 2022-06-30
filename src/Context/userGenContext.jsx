@@ -64,16 +64,23 @@ export function UserGenContextProvider({ children }) {
     alert("upload successfull");
   }
 
-  async function submitWork(workName,file) {
-    const submissionRef = ref(storage,`submissions/${user.uid}/${workName}`)
-    let downloadURL = ''
-    try{
+  async function submitWork(workName, file) {
+    const submissionRef = ref(storage, `submissions/${user.uid}/${workName}`);
+    let downloadURL = "";
+    try {
       await uploadBytesResumable(submissionRef, file);
       downloadURL = await getDownloadURL(submissionRef);
-      await updateDoc(doc(db, "works",workName),{
-        submitted:arrayUnion({uid:user.uid,downloadURL})
-      })
-    }catch(err){console.error(err)}
+      await updateDoc(doc(db, "works", workName), {
+        submitted: arrayUnion({
+          uid: user.uid,
+          downloadURL,
+          name: user.displayName,
+          marks:"0",
+        }),
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return (

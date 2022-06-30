@@ -2,18 +2,27 @@ import React, { useState } from "react";
 import TestScoreListModal from "./TestScoreListModal";
 import ListGroup from "react-bootstrap/ListGroup";
 import Alert from "react-bootstrap/Alert";
+import { useUserDetail } from "../../Context/userDBContext";
 
 export default function TestScoreList({ list }) {
   const [showModal, setModal] = useState(false);
-  const [heading, setHeading] = useState("");
+  const [submitted, setSubmitted] = useState([]);
   const [due, setDue] = useState(new Date());
+  const { getSubmitted } = useUserDetail();
 
-  const handleClick = (title, dueDate) => {
-    setHeading(`${title}`);
+  const handleClick = async (title, dueDate) => {
+    let _submitted = await getSubmitted(title);
+    // let submittedNames = submitted.map((el) => el.name);
+    // console.log(submittedNames);
+    setSubmitted(_submitted);
     setDue(dueDate);
     setModal(true);
   };
-  console.log(list)
+
+  // function isOverDue(date) {
+  //   return new Date(date.toDateString()) < new Date(new Date().toDateString());
+  // }
+
   return list?.length ? (
     <>
       <ListGroup className="mb-3 ">
@@ -21,22 +30,21 @@ export default function TestScoreList({ list }) {
           <ListGroup.Item
             key={i}
             onClick={() => {
-              console.log(list);
               handleClick(work.title, work.date);
             }}
             disabled={!work}
           >
-           {`${work.type} : ${work.title}`}
+            {`${work.type} : ${work.title}`}
           </ListGroup.Item>
         ))}
       </ListGroup>
       <TestScoreListModal
+        submitted={submitted}
         show={showModal}
         onHide={() => {
           setModal(false);
         }}
-        heading={heading}
-        due={due}
+        // isOverDue={isOverDue(due)}
       />
     </>
   ) : (

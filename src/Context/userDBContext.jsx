@@ -77,12 +77,20 @@ export function UserDetailsContextProvider({ children }) {
     }
   }
 
-  async function getSubmissions(work) {}
+  async function getSubmitted(test) {
+    const arr = [];
+    try {
+      const res = await getDoc(doc(db, "works", test));
+      return (res.data().submitted)
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <userDetailsContext.Provider
       value={{
-        getSubmissions,
+        getSubmitted,
         addFaculty,
         addStudent,
         joinClass,

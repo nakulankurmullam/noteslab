@@ -1,24 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
+import InputGroup from "react-bootstrap/InputGroup";
+import ListGroup from "react-bootstrap/ListGroup";
 
-function TestScoreListModal({ heading, due, onHide, show }) {
+const TEMP_STUDENTS = [
+  "Floch",
+  "Miakasa",
+  "Eren",
+  "Armin",
+  "Connie",
+  "Sasha",
+  "Jean",
+  "Floch",
+  "Miakasa",
+  "Eren",
+  "Armin",
+  "Connie",
+  "Sasha",
+  "Jean",
+];
+
+function TestScoreListModal({ submitted, onHide, show }) {
+  const [gradeList, setGradeList] = useState([]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(gradeList);
+  };
+
   return (
     <div>
       <Modal show={show} onHide={onHide} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            {heading}
+            Submitted Students
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body> 
-          <Alert variant="warning">Due date: {due}</Alert>
-          <Form.Group>
-            <Form.Label>Choose file:</Form.Label>
-            <Form.Control size="lg" type="file"></Form.Control>
-          </Form.Group>
+        <Modal.Body>
+          <Form onSubmit={handleSubmit}>
+            <ListGroup className="d-inline-block h-50 w-75">
+              {TEMP_STUDENTS.map((student) => (
+                <ListGroup.Item>
+                  {student}
+                  <InputGroup>
+                    <Form.Control
+                      onChange={(e) => {
+                        setGradeList([e.target.value, ...gradeList]);
+                      }}
+                      type="number"
+                    />
+                    <Button variant="outline-secondary">Fix Grade</Button>
+                  </InputGroup>
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button id="wrk_submit_btn" type="submit">
