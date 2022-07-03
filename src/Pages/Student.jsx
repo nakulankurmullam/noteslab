@@ -18,7 +18,7 @@ const retView = (val) => {
 
 function Student() {
   const [onView, setOnView] = useState("");
-  const {classList} = useUsrGen();
+  const { classList } = useUsrGen();
   return (
     <>
       <Container>
@@ -28,7 +28,11 @@ function Student() {
         <Row>
           <Col>{retView(onView)}</Col>
           <Col>
-            {classList?(<Selections mode="student" setOnView={setOnView} />):("...loading")}
+            {classList ? (
+              <Selections mode="student" setOnView={setOnView} />
+            ) : (
+              "...loading"
+            )}
           </Col>
         </Row>
       </Container>

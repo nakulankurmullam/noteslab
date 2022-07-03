@@ -11,12 +11,14 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { useUserAuth } from "./userAuthContext";
+import { useUsrGen } from "./userGenContext";
 import { db } from "../firebaseConfig";
 import { useLocation } from "react-router-dom";
 
 const userDetailsContext = createContext();
 
 export function UserDetailsContextProvider({ children }) {
+  const { setUserType } = useUsrGen();
   const { user } = useUserAuth();
   const { pathname } = useLocation();
   const userType = pathname.split("/")[1];
@@ -64,8 +66,9 @@ export function UserDetailsContextProvider({ children }) {
   async function getClassList() {
     const arr = [];
     try {
-      const data = (await getDoc(doc(db, userType, user.uid))).data();
-      const { classes } = data;
+      const res = await getDoc(doc(db, userType, user.uid));
+      setUserType(res.data().type);
+      const { classes } = res.data();
       for (let code of classes) {
         const q = query(collection(db, "class"), where("code", "==", code));
         const resp = await getDocs(q);
@@ -78,10 +81,30 @@ export function UserDetailsContextProvider({ children }) {
   }
 
   async function getSubmitted(test) {
-    const arr = [];
     try {
       const res = await getDoc(doc(db, "works", test));
-      return (res.data().submitted)
+      return res.data().submitted;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function gradeStudents(gradeList, title) {
+    try {
+      await updateDoc(doc(db, "works", title), {
+        submitted: [...gradeList],
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function getScore(title) {
+    try {
+      const res = await getDoc(doc(db, "works", title));
+      const { submitted } = res.data();
+      const currUser = (submitted.filter((el) => el.uid === user.uid))[0];
+      return currUser.mark
     } catch (err) {
       console.error(err);
     }
@@ -90,7 +113,9 @@ export function UserDetailsContextProvider({ children }) {
   return (
     <userDetailsContext.Provider
       value={{
+        getScore,
         getSubmitted,
+        gradeStudents,
         addFaculty,
         addStudent,
         joinClass,

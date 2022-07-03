@@ -32,7 +32,7 @@ function Faculty() {
               <Selections mode="faculty" setOnView={setOnView} />
             ) : (
               "loading"
-            )}
+            )} 
           </Col>
         </Row>
       </Container>

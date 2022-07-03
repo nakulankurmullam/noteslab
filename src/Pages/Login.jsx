@@ -4,7 +4,6 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from "../Context/userAuthContext";
-import { useUsrGen } from "../Context/userGenContext";
 
 const Login = () => {
   const { pathname } = useLocation();
@@ -13,18 +12,15 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { logIn } = useUserAuth();
-  const { setUserType } = useUsrGen();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
       await logIn(email, password);
-      if(pathname === "/student-login"){
-        setUserType("student")
-        navigate("/student")
-      }else{
-        setUserType("faculty");
+      if (pathname === "/student-login") {
+        navigate("/student");
+      } else {
         navigate("/faculty");
       }
     } catch (err) {

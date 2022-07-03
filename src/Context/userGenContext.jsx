@@ -75,7 +75,7 @@ export function UserGenContextProvider({ children }) {
           uid: user.uid,
           downloadURL,
           name: user.displayName,
-          marks:"0",
+          mark: "0",
         }),
       });
     } catch (err) {

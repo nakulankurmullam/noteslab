@@ -7,14 +7,14 @@ import { useUserDetail } from "../../Context/userDBContext";
 export default function TestScoreList({ list }) {
   const [showModal, setModal] = useState(false);
   const [submitted, setSubmitted] = useState([]);
+  const [title, setTitle] = useState("");
   const [due, setDue] = useState(new Date());
   const { getSubmitted } = useUserDetail();
 
   const handleClick = async (title, dueDate) => {
     let _submitted = await getSubmitted(title);
-    // let submittedNames = submitted.map((el) => el.name);
-    // console.log(submittedNames);
     setSubmitted(_submitted);
+    setTitle(title);
     setDue(dueDate);
     setModal(true);
   };
@@ -39,7 +39,8 @@ export default function TestScoreList({ list }) {
         ))}
       </ListGroup>
       <TestScoreListModal
-        submitted={submitted}
+        submittedArr={submitted}
+        title={title}
         show={showModal}
         onHide={() => {
           setModal(false);
