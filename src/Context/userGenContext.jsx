@@ -28,7 +28,11 @@ export function UserGenContextProvider({ children }) {
 
   async function uploadMaterial(name, selClass, file) {
     const uploadRef = ref(storage, `uploads/${user.uid}/${name}`);
-    await uploadBytesResumable(uploadRef, file);
+    try {
+      await uploadBytesResumable(uploadRef, file);
+    } catch (err) {
+      console.error(err);
+    }
     const downloadURL = await getDownloadURL(uploadRef);
     try {
       await updateDoc(doc(db, "class", selClass), {

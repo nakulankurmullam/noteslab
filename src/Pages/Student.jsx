@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 import { useUsrGen } from "../Context/userGenContext";
 import Topnav from "../Components/Topnav";
 import Scroller from "../Components/Scroller";
@@ -26,7 +29,27 @@ function Student() {
           <Topnav mode="student" />
         </Row>
         <Row>
-          <Col>{retView(onView)}</Col>
+          <Row>
+            <Col>
+              <Button
+                className="rounded-circle"
+                variant="outline-warning"
+                onClick={() => {
+                  setOnView("scroll");
+                }}
+                size="sm"
+              >
+                <i className="fa-solid fa-home"></i>
+              </Button>
+            </Col>
+            <Col></Col>
+          </Row>
+          {onView === "scroll" && (
+            <Col>
+              <Scroller setOnView={setOnView} />
+            </Col>
+          )}
+          {onView !== "scroll" && <Col>{retView(onView)}</Col>}
           <Col>
             {classList ? (
               <Selections mode="student" setOnView={setOnView} />

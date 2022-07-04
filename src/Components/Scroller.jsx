@@ -9,19 +9,21 @@ function Scroller() {
         <i className="fa-solid fa-history"></i> Recent Activities
       </div>
       <div className="scroll-wrap">
-        <ScrollCard />
-        <ScrollCard />
-        <ScrollCard />
-        <ScrollCard />
-        <ScrollCard />
-        <ScrollCard />
-        <ScrollCard />
-        <ScrollCard />
-        <ScrollCard />
-        <ScrollCard />
-        <ScrollCard />
-        <ScrollCard />
-        <ScrollCard />
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
+        <ScrollCard className="mt-3 mb-3"/>
       </div>
     </div>
   );
