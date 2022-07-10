@@ -42,14 +42,22 @@ export function UserDetailsContextProvider({ children }) {
   }
 
   async function addClass(code, title) {
-    await updateDoc(doc(db, "faculty", user.uid), {
-      classes: arrayUnion(code),
-    });
-    return setDoc(doc(db, "class", title), {
-      title,
-      code,
-    });
-
+    try {
+      await updateDoc(doc(db, "faculty", user.uid), {
+        classes: arrayUnion(code),
+      });
+      await setDoc(doc(db, "class", title), {
+        title,
+        code,
+        materials: [],
+        students: [],
+        works: [],
+      });
+      const out = await getDoc(doc(db, "class", title));
+      return out.data().code
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   async function joinClass(code) {
@@ -111,11 +119,18 @@ export function UserDetailsContextProvider({ children }) {
     }
   }
 
-
+  async function uploadDetails(dept, sem, regNo) {
+    await updateDoc(doc(db, "student", user.uid), {
+      regNo,
+      dept,
+      sem,
+    });
+  }
 
   return (
     <userDetailsContext.Provider
       value={{
+        uploadDetails,
         getScore,
         getSubmitted,
         gradeStudents,

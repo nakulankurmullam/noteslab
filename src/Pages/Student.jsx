@@ -54,7 +54,10 @@ function Student() {
             {classList ? (
               <Selections mode="student" setOnView={setOnView} />
             ) : (
-              "...loading"
+              <i
+                style={{ color: "white" }}
+                className="fa-solid fa-circle-notch fa-spin"
+              ></i>
             )}
           </Col>
         </Row>

@@ -11,18 +11,23 @@ import { v4 as uuidv4 } from "uuid";
 function CreateClass(props) {
   const { addClass } = useUserDetail();
   const [code, setCode] = useState(null);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const tmp = `${uuidv4()}`.split("-")[0];
-    if(!title) return;
-    try{
-      await addClass(tmp,title);
-    }catch(err){
+    const UUID = `${uuidv4()}`.split("-")[0];
+    let tmp = UUID.split("-")[0];
+    let returnedCode;
+    if (!title) return;
+    setLoading(true);
+    try {
+      returnedCode = await addClass(tmp, title);
+      setCode(returnedCode);
+    } catch (err) {
       console.error(err);
     }
-    setCode(tmp)
+    setLoading(false);
   };
 
   return (
@@ -53,20 +58,32 @@ function CreateClass(props) {
               ></Form.Control>
             </Form.Group>
 
-            {code && (
+            {code && !loading && (
               <Alert variant="success">
                 Copy this text: {code}
                 <CopyToClipboard text={code}>
-                  <button className="fa-solid fa-copy"></button>
+                  <button type="button" className="fa-solid fa-copy"></button>
                 </CopyToClipboard>
               </Alert>
             )}
           </Modal.Body>
           <Modal.Footer>
-            <Button id="class_code_btn" variant="outline-success" type="submit">
+            {loading && <i className="fa-solid fa-circle-notch fa-spin"></i>}
+            <Button
+              id="class_code_btn"
+              variant="outline-success"
+              type="submit"
+              disabled={loading}
+            >
               Create Class Code
             </Button>
-            <Button id="modal-close" onClick={props.onHide}>
+            <Button
+              id="modal-close"
+              onClick={() => {
+                setCode(null);
+                props.onHide();
+              }}
+            >
               Close
             </Button>
           </Modal.Footer>
