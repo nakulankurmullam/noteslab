@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
-import Alert from "react-bootstrap/Alert";
 
 export default function CalcCGPA() {
   const [showList, setShowList] = useState([]);
@@ -87,7 +86,7 @@ export default function CalcCGPA() {
           </Button>
         )}
       </Form>
-      {!!result && <Alert variant="info">CGPA: {result}</Alert>}
+      {!!result && <h4 variant="info">CGPA: {result}</h4>}
     </>
   );
 }

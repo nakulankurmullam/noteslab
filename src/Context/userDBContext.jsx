@@ -49,6 +49,7 @@ export function UserDetailsContextProvider({ children }) {
       title,
       code,
     });
+
   }
 
   async function joinClass(code) {
@@ -103,12 +104,14 @@ export function UserDetailsContextProvider({ children }) {
     try {
       const res = await getDoc(doc(db, "works", title));
       const { submitted } = res.data();
-      const currUser = (submitted.filter((el) => el.uid === user.uid))[0];
-      return currUser.mark
+      const currUser = submitted.filter((el) => el.uid === user.uid)[0];
+      return currUser.mark;
     } catch (err) {
       console.error(err);
     }
   }
+
+
 
   return (
     <userDetailsContext.Provider

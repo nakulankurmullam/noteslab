@@ -32,7 +32,7 @@ function Faculty() {
         <Row>
             <Col>
               <Button
-                className="rounded-circle"
+                className="rounded-circle mb-3"
                 variant="outline-warning"
                 onClick={() => {
                   setOnView("scroll");
@@ -43,7 +43,7 @@ function Faculty() {
               </Button>
             </Col>
             <Col></Col>
-          </Row>
+          </Row> 
           {onView === "scroll" && (
             <Col>
               <Scroller setOnView={setOnView} />

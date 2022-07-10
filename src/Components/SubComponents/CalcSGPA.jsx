@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
-import Alert from "react-bootstrap/Alert";
 
 function CalcSGPA() {
-
   const [showList, setShowList] = useState([]);
   const [marksArr, setMarks] = useState(new Array(showList.length));
   const [creditArr, setCredits] = useState(new Array(showList.length));
@@ -88,7 +86,7 @@ function CalcSGPA() {
           </Button>
         )}
       </Form>
-      {!!result && <Alert variant="info">SGPA: {result}</Alert>}
+      {!!result && <h4>SGPA: {result}</h4>}
     </>
   );
 }
