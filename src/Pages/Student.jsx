@@ -54,10 +54,11 @@ function Student() {
             {classList ? (
               <Selections mode="student" setOnView={setOnView} />
             ) : (
-              <i
-                style={{ color: "white" }}
-                className="fa-solid fa-circle-notch fa-spin"
-              ></i>
+              <><i
+              style={{ color: "white" }}
+              className="fa-solid fa-circle-notch fa-spin"
+            ></i> <br />
+            <p className="text-secondary">join any class first</p> </>
             )}
           </Col>
         </Row>

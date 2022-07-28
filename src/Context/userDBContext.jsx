@@ -76,7 +76,7 @@ export function UserDetailsContextProvider({ children }) {
     const arr = [];
     try {
       const res = await getDoc(doc(db, userType, user.uid));
-      setUserType(res.data().type);
+      setUserType(res.data()?.type);
       const { classes } = res.data();
       for (let code of classes) {
         const q = query(collection(db, "class"), where("code", "==", code));

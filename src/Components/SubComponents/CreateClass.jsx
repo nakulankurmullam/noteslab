@@ -60,7 +60,7 @@ function CreateClass(props) {
 
             {code && !loading && (
               <Alert variant="success">
-                Copy this text: {code}
+                Copy this text and save code won't appear again for security reasons: {code}
                 <CopyToClipboard text={code}>
                   <button type="button" className="fa-solid fa-copy"></button>
                 </CopyToClipboard>

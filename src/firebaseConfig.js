@@ -4,13 +4,15 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDNkceFTsaR43IwPQ2FFmX6fw1SaiNqNnI",
-  authDomain: "notes-lab-73d2e.firebaseapp.com",
-  projectId: "notes-lab-73d2e",
-  storageBucket: "notes-lab-73d2e.appspot.com",
-  messagingSenderId: "296435744126",
-  appId: "1:296435744126:web:c7d990d76006972adbc72f",
-  measurementId: "G-1P7ES56VVL",
+  apiKey: "AIzaSyDFQLxf9G_6UrjxbaItdt8e-czyariXmlQ",
+
+  authDomain: "noteslab-db91f.firebaseapp.com",
+
+  projectId: "noteslab-db91f",
+
+  storageBucket: "noteslab-db91f.appspot.com",
+  messagingSenderId: "913983772142",
+  appId: "1:913983772142:web:d802c4cdba3dde44c86aff"
 };
 
 // Initialize Firebase
